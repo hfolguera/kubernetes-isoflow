@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: isoflow
+  name: isoflow
+  namespace: isoflow
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: isoflow
+  template:
+    metadata:
+      labels:
+        app: isoflow
+    spec:
+      containers:
+        - image: salman2learn/isoflow:latest
+          name: isoflow
+          imagePullPolicy: Always
+          ports:
+            - name: isoflow
+              containerPort: 80
